@@ -20,16 +20,20 @@ export const RootNavigator: React.FunctionComponent<NavigatorProps> = () => {
 
   return (
     <NavigationContainer>
-      <Drawer.Navigator>
+      <Drawer.Navigator
+        screenOptions={{
+            
+        }}
+      >
         <Drawer.Screen
           name="home"
           component={HomeNavigator}
-          options={{title: 'Home'}}
+          options={{title: 'Home', headerTitle: ""}}
         />
         <Drawer.Screen
           name="setting"
           component={SettingNavigator}
-          options={{title: 'Setting'}}
+          options={{title: 'Setting', headerTitle: "Setting"}}
         />
       </Drawer.Navigator>
     </NavigationContainer>

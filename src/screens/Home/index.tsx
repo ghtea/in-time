@@ -1,5 +1,5 @@
 import React from 'react';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';// import {ResultsScreen} from './screen/Results';
+import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import { HomeTodayScreen } from './Today';
 import { HomeWeekScreen } from './Week';
 
@@ -7,7 +7,7 @@ import { HomeWeekScreen } from './Week';
 
 export type NavigatorProps = {};
 
-const Tab = createBottomTabNavigator();
+const Tab = createMaterialTopTabNavigator();
 
 export const HomeNavigator: React.FunctionComponent<NavigatorProps> = () => {
   // const isDarkMode = useColorScheme() === 'dark';

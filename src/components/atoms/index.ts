@@ -1,1 +1,1 @@
-export { View, Text } from 'react-native';
+export { View, Text, FlatList } from 'react-native';
