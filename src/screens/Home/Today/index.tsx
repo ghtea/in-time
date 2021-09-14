@@ -1,18 +1,27 @@
 import React, { useMemo } from 'react';
 import {StyleSheet} from "react-native"
-import {View, Text, FlatList, SwipeListView} from "@/components/atoms"
+import {View, Text, FlatList} from "@/components/atoms"
 import { Routine, RoutineCategory } from '@/utils/types';
 import { ListItemRoutine } from '@/components/organisms/ListItemRoutine';
 
 export const HomeTodayScreen = () => {
 
-  const styles = StyleSheet.create({
-    container: {
-     flex: 1,
-     paddingTop: 22
+  const ss = StyleSheet.create({
+    root: {
+      
     },
-    item: {
-
+    main: {
+      flexDirection: "row",
+      alignItems: 'center', 
+      justifyContent: 'center' 
+    },
+    side: {
+      flexGrow: 0,
+      flexShrink: 0,
+    },
+    list: {
+      flexGrow: 1,
+      flexShrink: 1,
     }
   })
 
@@ -27,18 +36,20 @@ export const HomeTodayScreen = () => {
   },[])
 
   return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <SwipeListView
-      style={{}}
-        data={listData}
-        renderItem={({item}) => <ListItemRoutine data={item}/>}
-        renderHiddenItem={ (data, rowMap) => (
-          <View>
-              <Text>Left</Text>
-              <Text>Right</Text>
-          </View>
-      )}
-      />
+    <View style={ss.root}>
+      <View style={ss.main}>
+        <View
+          style={ss.side}
+        >
+          <Text>side</Text>
+        </View>
+
+        <FlatList
+          style={ss.list}
+          data={listData}
+          renderItem={({item}) => <ListItemRoutine data={item}/>}
+        />
+      </View>
     </View>
   );
 }
