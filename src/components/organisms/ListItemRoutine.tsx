@@ -15,6 +15,7 @@ export const ListItemRoutine: React.FunctionComponent<ListItemRoutineProps> = ({
 
   const ss = StyleSheet.create({
     root: {
+      width: "100%",
      flex: 1,
      paddingTop: 22
     },

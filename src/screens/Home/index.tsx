@@ -17,7 +17,11 @@ export const HomeNavigator: React.FunctionComponent<NavigatorProps> = () => {
   // };
 
   return (
-      <Tab.Navigator>
+      <Tab.Navigator
+        screenOptions={{
+          swipeEnabled: false
+        }}
+      >
         <Tab.Screen
           name="today"
           component={HomeTodayScreen}

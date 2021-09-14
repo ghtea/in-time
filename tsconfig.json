@@ -11,7 +11,7 @@
     },
   },
   "include": [
-    "next-env.d.ts", "**/*.ts", "**/*.tsx", "**/.eslintrc.js", 
+    "next-env.d.ts", "**/*.ts", "**/*.tsx", "**/.eslintrc.js", "src/components/atoms/dd", 
   ],
   "exclude": [
     "node_modules"
