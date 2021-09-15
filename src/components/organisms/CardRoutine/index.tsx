@@ -4,11 +4,11 @@ import {View, Text, FlatList, Swipeable} from "@/components/atoms"
 import { Routine, RoutineCategory } from '@/utils/types';
 import { renderLeftActions } from './renderLeftAction';
 
-export type ListItemRoutineProps = {
+export type CardRoutineProps = {
   data: Routine
 }
 
-export const ListItemRoutine: React.FunctionComponent<ListItemRoutineProps> = ({
+export const CardRoutine: React.FunctionComponent<CardRoutineProps> = ({
   data
 }) => {
 

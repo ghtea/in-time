@@ -1,10 +1,11 @@
 export type Routine = {
+  id: number;
+  
   category: RoutineCategory | RoutineCategory[]
   title: string
 
-  startAt: string // 
-  endAt: string // "hh-ss"   중간에 끊길수 있ㅏ
-  length: number // minutes
+  startAt: number // minutes after 00:00
+  endAt: number // minutes after 00:00
 
   done?: boolean
 }
