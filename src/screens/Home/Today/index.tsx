@@ -17,9 +17,29 @@ export const HomeTodayScreen = () => {
       alignItems: 'flex-start', 
       justifyContent: 'center' 
     },
+    indicator: {
+      position: "absolute",
+      width: "100%",
+      height: 3,
+      backgroundColor: "#007AFF"
+    },
     side: {
       flexGrow: 0,
       flexShrink: 0,
+      width: 30,
+      backgroundColor: "#ffffff",
+      borderColor: "#F0F0F0",
+      borderRightWidth: 2,
+    },
+    clockWrapper: {
+      width: "100%",
+      position: "absolute",
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+    },
+    clock: {
+      color: "#909090"
     },
     list: {
       flexGrow: 1,
@@ -45,17 +65,25 @@ export const HomeTodayScreen = () => {
     ]).map((item,index) => ({...item, key: `${item.title}-${index}`}))
   },[])
 
-  const startAtMin = useMemo(()=>(listData[0].startAt),[])
+  const minStartAt = useMemo(()=>(listData.length > 0 ? listData[0].startAt : 0),[])
 
-  const endAtMax = useMemo(()=>(listData[listData.length-1].endAt),[])
+  const maxEndAt = useMemo(()=>(listData.length > 0 ? listData[listData.length-1].endAt : 24 * 60),[])
+
+  const clockList = [3,6,9,12,15,18,21,24].filter(item => item * 60 >= minStartAt)
 
   return (
     <View style={ss.root}>
       <View style={ss.main}>
+        <View></View>
+
         <View
-          style={ss.side}
+          style={[ss.side, {height: (maxEndAt-minStartAt) * minuteToHeightRatio }]}
         >
-          <Text>side</Text>
+          {clockList.map(item=>(
+            <View style={[ss.clockWrapper, {top: item * 60 * minuteToHeightRatio}]}>
+              <Text style={ss.clock}>{item}</Text>
+            </View>
+          ))}
         </View>
 
         <View style={ss.list}>
