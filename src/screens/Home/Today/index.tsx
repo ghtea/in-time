@@ -14,32 +14,38 @@ export const HomeTodayScreen = () => {
     },
     main: {
       flexDirection: "row",
-      alignItems: 'flex-start', 
-      justifyContent: 'center' 
+      justifyContent: 'center',
+      position: "relative"
     },
-    indicator: {
+    indicatorWrapper: {
       position: "absolute",
       width: "100%",
+      top: 66,
+    },
+    indicator: {
+      width: "100%",
       height: 3,
-      backgroundColor: "#007AFF"
+      backgroundColor: "#007AFF",
+      zIndex: 100,
     },
     side: {
-      flexGrow: 0,
-      flexShrink: 0,
       width: 30,
+      height: 24 * 60 * minuteToHeightRatio,
       backgroundColor: "#ffffff",
       borderColor: "#F0F0F0",
       borderRightWidth: 2,
     },
     clockWrapper: {
+      flex: 1,
       width: "100%",
-      position: "absolute",
       display: "flex",
       justifyContent: "center",
       alignItems: "center",
     },
     clock: {
-      color: "#909090"
+    },
+    clockText: {
+      color: "#909090",
     },
     list: {
       flexGrow: 1,
@@ -74,14 +80,18 @@ export const HomeTodayScreen = () => {
   return (
     <View style={ss.root}>
       <View style={ss.main}>
-        <View></View>
+        <View style={ss.indicatorWrapper}>
+          <View style={ss.indicator}></View>
+        </View>
 
         <View
-          style={[ss.side, {height: (maxEndAt-minStartAt) * minuteToHeightRatio }]}
+          style={ss.side}
         >
           {clockList.map(item=>(
-            <View style={[ss.clockWrapper, {top: item * 60 * minuteToHeightRatio}]}>
-              <Text style={ss.clock}>{item}</Text>
+            <View style={[ss.clockWrapper, {top: 0}]}>
+              <View style={ss.clock}>
+                <Text style={ss.clockText}>{item}</Text>
+              </View>
             </View>
           ))}
         </View>
